@@ -19,10 +19,10 @@ else
   if [ -e "${WORKDIR}/start.sh" ] && [ -e "${FILE_PATH}/config.json" ]; then
     echo "添加 nezha & socks5 的 crontab 重启任务"
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && ${CRON_S5} && ${CRON_NEZHA}") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && ${CRON_S5} && ${CRON_NEZHA}") | crontab -
-    (crontab -l | grep -F "* * pgrep -x \"nezha-agent\" > /dev/null || ${CRON_NEZHA}") || (crontab -l; echo "*/12 * * * * pgrep -x \"nezha-agent\" > /dev/null || ${CRON_NEZHA}") | crontab -
+    #(crontab -l | grep -F "* * pgrep -x \"nezha-agent\" > /dev/null || ${CRON_NEZHA}") || (crontab -l; echo "*/12 * * * * pgrep -x \"nezha-agent\" > /dev/null || ${CRON_NEZHA}") | crontab -
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
-    (crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
-    (crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
+    #(crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
+    #(crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
     (crontab -l | grep -F "@reboot ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") || (crontab -l; echo "@reboot ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") | crontab -
     (crontab -l | grep -F "*/30 * * * * ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") || (crontab -l; echo "*/30 * * * * ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") | crontab -
   elif [ -e "${WORKDIR}/start.sh" ]; then
@@ -33,9 +33,9 @@ else
     echo "添加 socks5 的 crontab 重启任务"
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && ${CRON_S5}") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && ${CRON_S5}") | crontab -
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
-    (crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
+    #(crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
     (crontab -l | grep -F "@reboot ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") || (crontab -l; echo "@reboot ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") | crontab -
     (crontab -l | grep -F "*/30 * * * * ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") || (crontab -l; echo "*/30 * * * * ps aux | grep serv00sb | grep -v "grep" >/dev/null  ||  nohup /home/$(whoami)/serv00-play/singbox/serv00sb run -c /home/$(whoami)/serv00-play/singbox/config.json >/dev/null 2>&1") | crontab -
-    (crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
+    #(crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
   fi
 fi
