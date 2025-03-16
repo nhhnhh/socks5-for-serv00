@@ -25,8 +25,8 @@ else
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
     #(crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
     #(crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
-    (crontab -l | grep -F "@reboot pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") ||   (crontab -l; echo "@reboot pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
-    (crontab -l | grep -F "*/5 * * * * pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &")||  (crontab -l; echo "*/5 * * * * pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
+    (crontab -l | grep -F "@reboot top  | grep serv00sb > /dev/null > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") ||   (crontab -l; echo "@reboot top  | grep serv00sb > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
+    (crontab -l | grep -F "*/5 * * * * top  | grep serv00sb > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &")||  (crontab -l; echo "*/5 * * * * top  | grep serv00sb > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
   
   elif [ -e "${WORKDIR}/start.sh" ]; then
     echo "添加 nezha 的 crontab 重启任务"
@@ -36,8 +36,8 @@ else
     echo "添加 socks5 的 crontab 重启任务"
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && ${CRON_S5}") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && ${CRON_S5}") | crontab -
     (crontab -l | grep -F "* * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") || (crontab -l; echo "*/12 * * * * pgrep -x \"s5\" > /dev/null || ${CRON_S5}") | crontab -
-    (crontab -l | grep -F "@reboot pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") ||   (crontab -l; echo "@reboot pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
-    (crontab -l | grep -F "*/5 * * * * pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &")||  (crontab -l; echo "*/5 * * * * pgrep -x \"serv00sb\" > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
+    (crontab -l | grep -F "@reboot top  | grep serv00sb > /dev/null > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") ||   (crontab -l; echo "@reboot top  | grep serv00sb > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
+    (crontab -l | grep -F "*/5 * * * * top  | grep serv00sb > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &")||  (crontab -l; echo "*/5 * * * * top  | grep serv00sb > /dev/null || nohup ${FILE_PATH1}/serv00sb run -c ${FILE_PATH1}/config.json >/dev/null  2>&1  &") | crontab -
     #(crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
     #(crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
   fi
