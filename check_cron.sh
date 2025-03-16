@@ -44,5 +44,6 @@ else
     echo "添加 sb 的 crontab 重启任务"
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && bash ${FILE_PATH1}/sb.sh") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && bash ${FILE_PATH1}/sb.sh") | crontab -
     (crontab -l | grep -F "*/5 * * * * bash ${FILE_PATH1}/sb.sh") || (crontab -l; echo "*/5 * * * * bash ${FILE_PATH1}/sb.sh") | crontab -
+     bash ${FILE_PATH1}/sb.sh
   fi
 fi
