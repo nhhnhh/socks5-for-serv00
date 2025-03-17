@@ -50,6 +50,6 @@ fi
 echo "检查并添加和启动 sb 任务"
 if [ -e "${FILE_PATH1}/config.json" ]; then
     (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && /bin/bash ${FILE_PATH1}/sb.sh > /dev/null") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && /bin/bash ${FILE_PATH1}/sb.sh > /dev/null") | crontab -
-    (crontab -l | grep -F "*/5 * * * * /bin/bash ${FILE_PATH1}/sb.sh") || (crontab -l; echo "*/5 * * * * /bin/bash ${FILE_PATH1}/sb.sh") | crontab -
-    bash ${FILE_PATH1}/sb.sh
+    (crontab -l | grep -F "*/5 * * * * cd ${FILE_PATH1} && /bin/bash ${FILE_PATH1}/sb.sh") || (crontab -l; echo "*/5 * * * * cd ${FILE_PATH1} && /bin/bash ${FILE_PATH1}/sb.sh") | crontab -
+    cd ${FILE_PATH1} && bash ${FILE_PATH1}/sb.sh
   fi
