@@ -40,11 +40,6 @@ else
     #(crontab -l | grep -F "*/5 * * * * top  | grep serv00sb > /dev/null || eval  ${CRON_SB}")||  (crontab -l; echo "*/5 * * * * top  | grep serv00sb > /dev/null || eval  ${CRON_SB}") | crontab -
     #(crontab -l | grep -F "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "@reboot bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
     #(crontab -l | grep -F "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") || (crontab -l; echo "*/30 * * * * bash /home/$(whoami)/serv00-play/singbox/start.sh > /dev/null 2>&1") | crontab -
-  elif [ -e "${FILE_PATH1}/config.json" ]; then
-    echo "添加 sb 的 crontab 重启任务"
-    (crontab -l | grep -F "@reboot pkill -kill -u $(whoami) && bash ${FILE_PATH1}/sb.sh") || (crontab -l; echo "@reboot pkill -kill -u $(whoami) && bash ${FILE_PATH1}/sb.sh") | crontab -
-    (crontab -l | grep -F "*/5 * * * * bash ${FILE_PATH1}/sb.sh") || (crontab -l; echo "*/5 * * * * bash ${FILE_PATH1}/sb.sh") | crontab -
-     bash ${FILE_PATH1}/sb.sh
   fi
 fi
 echo "检查并添加和启动 sb 任务"
